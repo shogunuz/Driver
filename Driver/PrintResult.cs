@@ -8,7 +8,7 @@ namespace Driver
 {
     class PrintResult
     {
-        private static int k;
+        
         /* 
           Можно было бы просто вывести WriteLine"ом сообщения,
           но я решил воспользоваться событиями (пускай и незначительно). 
