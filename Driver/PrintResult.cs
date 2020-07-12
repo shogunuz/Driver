@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Driver.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -8,7 +9,7 @@ namespace Driver
 {
     class PrintResult
     {
-        
+        private static int time = 500; // 500 милли секунд
         /* 
           Можно было бы просто вывести WriteLine"ом сообщения,
           но я решил воспользоваться событиями (пускай и незначительно). 
@@ -34,10 +35,10 @@ namespace Driver
         private static void Sleeping()
         {
             Console.Write("Подождите, пожалуйста, производится вычисление");
-            for (int i = 0; i < 5; i++)
-            {
+            for (int i = 0; i < CarEngine.MaxTime/time + 1; i++)
+            { 
                 Console.Write(".");
-                Thread.Sleep(500);
+                Thread.Sleep(time);
             }
             Console.WriteLine();
         }

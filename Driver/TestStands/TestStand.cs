@@ -11,7 +11,7 @@ namespace Driver
         public static event EngineHandler TimeOver;
         public static event EngineHandler TemperatureOverheated;
 
-        private static int TimeLimit = 3000;
+       // private static int TimeLimit = 3000;
         private static double a(double m, int i)
         {
             return m/i;
@@ -24,7 +24,7 @@ namespace Driver
             double tmpEngine = TEnv;
             double M = CarEngine.M[i], V = CarEngine.V[i];
 
-            while ((CarEngine.T - tmpEngine)>0.01 && time < TimeLimit) 
+            while ((CarEngine.T - tmpEngine)>0.01 && time < CarEngine.MaxTime) 
             {
                 V += a(M,CarEngine.I);
 

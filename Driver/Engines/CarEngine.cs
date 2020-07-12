@@ -17,6 +17,7 @@ namespace Driver.Data
         public const double Hv = 0.0001;
         public const double C = 0.1;
 
+        public const int MaxTime = 10000;
         internal static double GetVh(double M, double V)
         {
             return M * CarEngine.Hm + Math.Pow(V, 2) * CarEngine.Hv;
