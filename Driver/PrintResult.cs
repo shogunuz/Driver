@@ -9,7 +9,7 @@ namespace Driver
 {
     class PrintResult
     {
-        private static int time = 500; // 500 милли секунд
+      
         /* 
           Можно было бы просто вывести WriteLine"ом сообщения,
           но я решил воспользоваться событиями (пускай и незначительно). 
@@ -20,34 +20,18 @@ namespace Driver
         */
         public static void PrintData(double te)
         {
-            Console.WriteLine("\n\t***Процесс вычисления***");
+            Console.WriteLine($"\n{ConstText.TimeForResearchString} {CarEngine.MaxTime} с");
+            Console.WriteLine($"\n\t{ConstText.CalculationProcessString}");
 
-            Task task = Task.Factory.StartNew(Sleeping);
-            task.Wait();
+            WaitingForCalculation.CalculationSimulation();
 
-            TestStand.TemperatureOverheated += TempOverheatedMsg;
-            TestStand.TimeOver += TimeOverMsg;
+            TestStand.TemperatureOverheated += (msg) => { Console.WriteLine(msg); };
+            TestStand.TimeOver += (msg) => Console.WriteLine(msg);
 
-            Console.WriteLine("\n\t***Результат***");
+            Console.WriteLine($"\n\t{ConstText.ResultString}");
 
             TestStand.GetResult(te);
         }
-        private static void Sleeping()
-        {
-            Console.Write("Подождите, пожалуйста, производится вычисление");
-            for (int i = 0; i < CarEngine.MaxTime/time + 1; i++)
-            { 
-                Console.Write(".");
-                Thread.Sleep(time);
-            }
-            Console.WriteLine();
-        }
-        private static void TempOverheatedMsg(string msg)
-            => Console.WriteLine(msg);
-        
-        
-        private static void TimeOverMsg(string msg)
-            => Console.WriteLine(msg);
         
 
     }

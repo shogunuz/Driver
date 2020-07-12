@@ -10,14 +10,15 @@ namespace Driver
 
         static void Main(string[] args)
         {
-            Console.Write(ConstText.EnterTemperature);
+            Console.Write(ConstText.EnterTemperatureString);
             Double.TryParse(Console.ReadLine(), out double TempEnvironment);
+
             if (TempEnvironment >= 1 && TempEnvironment < CarEngine.T)
                 PrintResult.PrintData(TempEnvironment);
             else if (TempEnvironment >= 1 && TempEnvironment > CarEngine.T)
-                Console.WriteLine(ConstText.TEvnBiggerThanEngineTemp);
+                Console.WriteLine(ConstText.TEvnBiggerThanEngineTempString);
             else
-                Console.WriteLine(ConstText.WrongNumber);
+                Console.WriteLine(ConstText.WrongNumberString);
 
             Console.ReadKey();
         }

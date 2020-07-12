@@ -17,6 +17,8 @@ namespace Driver.Data
         public const double Hv = 0.0001;
         public const double C = 0.1;
 
+        //Задаем максимальное время, на которое проверяется двигатель. 
+        //Без этого лимита процесс вычисления может сильно затянуться
         public const int MaxTime = 10000;
         internal static double GetVh(double M, double V)
         {
